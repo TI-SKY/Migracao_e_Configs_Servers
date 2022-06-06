@@ -251,13 +251,13 @@ Efetuar troca do método do firebird para superclassic
 ```bash
 /opt/firebird/bin/changeMultiConnectMode.sh
 ```
-- thread: **super classic**
+- thread: **super classic** #recomendado
 -- super classic aparece um processo unico fb_smp_server
 - process: **classic**
 -- classic usa multi processo fb_inet (um processo para cada conexão)
  
-OBS¹: Se alterar para o classic e o sistema não rodar o firebird é necessário verificar se não ter o xinet na pasta /etc/init.d, é necessário instalar o xinet, para isso
-OBS²: Quando aplicado o modo classic mudar as paradas e inicializações nos scripts que normalmente passam a ser /etc/init.d/xinetd stop ou shutdown, /etc/init.d/xinetd start. E encerrar os processos abertos pelo usuário firebird (encerra também o dash do hqbird): **killall -u firebird**
+- OBS¹: Se alterar para o classic e o sistema não rodar o firebird é necessário verificar se não ter o xinet na pasta /etc/init.d, é necessário instalar o xinet, para isso
+- OBS²: Quando aplicado o modo classic mudar as paradas e inicializações nos scripts que normalmente passam a ser /etc/init.d/xinetd stop ou shutdown, /etc/init.d/xinetd start. E encerrar os processos abertos pelo usuário firebird (encerra também o dash do hqbird): **killall -u firebird**
 ```bash
 apt install xinetd
 ```
@@ -289,8 +289,9 @@ vi /opt/firebird/firebird.conf
 ```
 DefaultDbCachePages = 384 #entre 384 a 1024
 
+```bash
 RemoteAuxPort = 3051
-
+```
 
 Parar e desativar serviços que vem com hq2022 e não usamos
 ```bash
