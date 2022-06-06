@@ -221,7 +221,7 @@ apt-get install software-properties-common && apt-add-repository 'deb http://sec
 
 Entrar no diretório de download HQbird comando abaixo
 ```bash
-cd /sky/executaveis/install/HQbird
+mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 ```
 ```bash
 wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2022.sh
@@ -229,14 +229,124 @@ wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2022.sh
 
 Descompactar, dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
-unzip /sky/executaveis/HQbird/hqbirdlinux.zip
+unzip /sky/executaveis/install/HQbird/hqbirdlinux.zip
 ```
 ```bash
-rm /sky/executaveis/HQbird/hqbirdlinux.zip
+rm /sky/executaveis/install/HQbird/hqbirdlinux.zip
 ```
 ```bash
-chmod +x /sky/executaveis/HQbird/install_fb25_hqbird2022.sh
+chmod +x /sky/executaveis/install/HQbird/install_fb25_hqbird2022.sh
 ```
 ```bash
 ./install_fb25_hqbird2022.sh
 ```
+
+Efetuar troca do método do firebird para superclassic
+```bash
+/opt/firebird/bin/changeMultiConnectMode.sh
+```
+thread = para super classic
+process = para classic
+
+  -- super classic aparece um processo unico fb_smp_server
+  -- classic usa multi processo fb_inet (um processo para cada conexão)
+
+OBS¹: Se alterar para o classic e o sistema não rodar o firebird é necessário verificar se não ter o xinet na pasta /etc/init.d, é necessário instalar o xinet, para isso
+OBS²: Quando aplicado o modo classic mudar as paradas e inicializações nos scripts que normalmente passam a ser /etc/init.d/xinetd stop ou shutdown, /etc/init.d/xinetd start. E encerrar os processos abertos: killall -u firebird 
+```bash
+apt install xinetd
+```
+
+Criar os atalhos gbak, gstat e gfix
+```bash
+ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec
+```
+
+Se necessário redefinir a senha do firebird no servidor
+```bash
+/opt/firebird/bin/gsec
+```
+```bash
+modify sysdba -pw #8_CHAR
+```
+```bash
+quit
+```
+
+Dê permissão para a pasta dados (onde ficarão os bancos)
+```bash
+chown -R firebird.firebird /sky/dados && chmod 664 /sky/dados/*?db
+```
+
+Verificar configurações do conf do firebird
+```bash
+vi /opt/firebird/firebird.conf
+```
+DefaultDbCachePages = 384 #entre 384 a 1024
+RemoteAuxPort = 3051
+
+Parar e desativar serviços que vem com hq2022 e não usamos
+```bash
+systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service
+
+systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
+```
+
+Após definir o conf personalizado como ativo definir os bancos para que passem a usar as configurções personalizadas do conf personalizado, no diretório dados aplicar o comando.
+```bash
+for i in *.?db; do gfix -buffers 0 $i;done
+```
+OBS: Após esse procedimento para que entre em vigor é necessário parar e iniciar o firebird.
+
+Definir os bancos de imagens antigos para somente leitura
+```bash
+for i in skyimagens*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
+for i in tedimagens*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
+for i in imgprotesto*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
+for i in imagens*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
+```
+Mas o último banco de imagens deve ficar como leitura e gravação, para isso aplique o comando abaixo no último banco de imagens
+```bash
+gfix -mode read_write -user sysdba -password masterkey #ultimo-banco-de-imagens
+```
+
+Teoricamente está configurado e pronto para receber a sincronização dos dados que devem ficar organizados conforme os padrões.
+
+Ficando então em /sky
+
+backup
+backup/completo
+backup/diario
+backup/incremental
+dados
+executaveis
+executaveis/install
+livros_digitalizados
+logs
+scripts
+skyremotebackup
+
+Dentro do diretório /sky/scripts crie os scripts necessários e conforme modelos abaixo:
+(scripts no github)
+sincroniza-srb.sh (linux para a estação srb)
+sincroniza_executaveis_para_srb.sh (linux para estação srb)
+skybackup.sh
+skybackup-img.sh
+inicia-backup-diario.sh
+
+## SOUNDEX imoveis
+
+Se tiver sistema de imoveis, colocar a skysoundex.dll em: /opt/firebird/UDF/
+
+[SKySoundex.dll](https://drive.google.com/file/d/14T9GZy0SVe73d4qf59GsMVbK0PDhI3ph/view)
+
+```bash
+```
+
+```bash
+```
+
+```bash
+```
+
+
