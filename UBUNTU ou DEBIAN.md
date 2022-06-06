@@ -50,6 +50,7 @@ Instalar unzip no sistema
 apt-get install unzip
 ```
 
+
 ## Configurar a rede
 
 ### Exemplo quando configurado 2 placas de rede com sistema bond: (placas funcionam com redundândia de conexão e somam as taxas)
@@ -131,6 +132,7 @@ systemctl disable systemd-networkd-wait-online.service
 systemctl mask systemd-networkd-wait-online.service
 ```
 
+
 ## Configurar o compartilhamento de arquivos
 
 Criar estrutura de diretórios em
@@ -204,6 +206,7 @@ Reiniciar o serviço do samba
 systemctl restart smbd
 ```
 
+
 ## Instalar e configurar o HQBIRD
 
 Instalar as dependencias para instalação do HQbird com o comando abaixo
@@ -211,14 +214,16 @@ Instalar as dependencias para instalação do HQbird com o comando abaixo
 apt install -y openjdk-8-jre-headless libtommath1 libncurses5
 ```
 
-### Caso seja DEBIAN
+#### Caso seja DEBIAN
 ALGUMAS VERSÕES DO DEBIAN NÃO FUNCIONAM COM A VERSÃO DO HQ 2020
 O debian 10 e 11 não tem mais o java 8 nativamente no repositório, para poder instalar o JAVA 8 no debian, siga os passos abaixo.
 
 ```bash
 apt-get install software-properties-common && apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && apt-get update && apt-get install openjdk-8-jdk
 ```
-#### Se não for debian, ignorar os comandos acima
+##### Se não for debian, ignorar os comandos acima
+
+
 
 Entrar no diretório de download HQbird comando abaixo
 ```bash
@@ -285,6 +290,7 @@ vi /opt/firebird/firebird.conf
 DefaultDbCachePages = 384 #entre 384 a 1024
 RemoteAuxPort = 3051
 
+
 Parar e desativar serviços que vem com hq2022 e não usamos
 ```bash
 systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service
@@ -310,6 +316,7 @@ Mas o último banco de imagens deve ficar como leitura e gravação, para isso a
 gfix -mode read_write -user sysdba -password masterkey #ultimo-banco-de-imagens
 ```
 
+
 Teoricamente está configurado e pronto para receber a sincronização dos dados que devem ficar organizados conforme os padrões.
 
 Ficando então em /sky
@@ -325,6 +332,7 @@ livros_digitalizados
 logs
 scripts
 skyremotebackup
+
 
 Dentro do diretório /sky/scripts crie os scripts necessários e conforme modelos abaixo:
 (scripts no github)
