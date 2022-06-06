@@ -288,6 +288,7 @@ Verificar configurações do conf do firebird
 vi /opt/firebird/firebird.conf
 ```
 DefaultDbCachePages = 384 #entre 384 a 1024
+
 RemoteAuxPort = 3051
 
 
