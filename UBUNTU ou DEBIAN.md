@@ -218,6 +218,7 @@ O debian 10 e 11 não tem mais o java 8 nativamente no repositório, para poder 
 ```bash
 apt-get install software-properties-common && apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && apt-get update && apt-get install openjdk-8-jdk
 ```
+#### Se não for debian, ignorar os comandos acima
 
 Entrar no diretório de download HQbird comando abaixo
 ```bash
