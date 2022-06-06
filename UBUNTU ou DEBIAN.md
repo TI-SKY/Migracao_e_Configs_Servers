@@ -246,6 +246,7 @@ Efetuar troca do método do firebird para superclassic
 /opt/firebird/bin/changeMultiConnectMode.sh
 ```
 thread | process
+--- | ---
 super classic | classic
 
 - super classic aparece um processo unico fb_smp_server
