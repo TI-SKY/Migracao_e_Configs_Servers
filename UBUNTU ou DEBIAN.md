@@ -340,13 +340,80 @@ Se tiver sistema de imoveis, colocar a skysoundex.dll em: /opt/firebird/UDF/
 
 [SKySoundex.dll](https://drive.google.com/file/d/14T9GZy0SVe73d4qf59GsMVbK0PDhI3ph/view)
 
+
+## Crontab
+Realiza os backups diários de Segundas a Sextas no servidor local.
 ```bash
+00 12 * * 1-5 root  /sky/scripts/inicia-backup-diario.sh
 ```
 
+Realiza as sincronizações de Segundas a Sextas para estação do backup remoto.
 ```bash
+00 21 * * 1-5 root  /sky/scripts/sincroniza_executaveis_para_srb.sh
+30 21 * * 1-5 root  /sky/scripts/sincroniza-srb.sh
 ```
 
+Realiza a reinicialização do servidor todas as Segundas Feiras à 01:00.
 ```bash
+00 01 * * 1   root  shutdown -r now
+```
+
+Realiza sincronização da hora  todas as Segundas Feiras pela internet.
+```bash
+10 07 * * 1   root  ntpdate br.pool.ntp.org br.pool.ntp.org br.pool.ntp.org
 ```
 
 
+## Lowercase no nome dos bancos
+
+### Método 1
+
+Usar a linha de comando (atenção as CRASES e APÓSTROFOS)
+```bash
+for i in $( ls | grep [A-Z] ); do mv -i $i `echo $i | tr 'A-Z' 'a-z'`; done
+```
+
+### Método 2
+
+Instalar o serviço rename
+```bash
+apt-get install rename
+```
+
+De maiúscula para minúscula entre no diretório dados e aplique o comando
+```bash
+rename 'y/A-Z/a-z/' *
+```
+
+De minúscula para maiúsculas entre no diretório dados e aplique o comando
+```bash
+rename 'y/a-z/A-Z/' *
+```
+
+Renomear tudo de .gdb para .fdb entre no diretório dados e aplique o comando
+```bash
+rename -v 's/.gdb/.fdb/' *.gdb
+```
+
+Renomear tudo de .fdb para .gdb entre no diretório dados e aplique o comando:
+```bash
+rename -v 's/.fdb/.gdb/' *.fdb
+```
+
+## Bancos de imagens nos sistemas
+
+### IMOVEIS
+
+1º Navegue nos menus Utilitários>>Painel de controle>>Conexão com banco de dados.
+2º Tecle ctrl+D no menu Digitalização>>Configurações
+
+
+### NOTAR
+
+1º Navegue nos menus Utilitários>>Painel de controle>>Conexão com banco de dados.
+2º Navegue nos menus Utilitários>>Painel de controle>>Skyimagens
+
+
+
+```bash
+```
