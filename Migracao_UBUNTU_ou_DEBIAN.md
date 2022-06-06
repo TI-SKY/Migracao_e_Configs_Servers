@@ -308,14 +308,14 @@ OBS: Após esse procedimento para que entre em vigor é necessário parar e inic
 
 Definir os bancos de imagens antigos para somente leitura
 ```bash
-for i in skyimagens*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
-for i in tedimagens*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
-for i in imgprotesto*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
-for i in imagens*.?db; do gfix -mode read_only -user sysdba -password masterkey  $i;done
+for i in skyimagens*.?db; do gfix -mode read_only $i;done
+for i in tedimagens*.?db; do gfix -mode read_only $i;done
+for i in imgprotesto*.?db; do gfix -mode read_only $i;done
+for i in imagens*.?db; do gfix -mode read_only $i;done
 ```
 Mas o último banco de imagens deve ficar como leitura e gravação, para isso aplique o comando abaixo no último banco de imagens
 ```bash
-gfix -mode read_write -user sysdba -password masterkey #ultimo-banco-de-imagens
+gfix -mode read_write #ultimo-banco-de-imagens
 ```
 
 
