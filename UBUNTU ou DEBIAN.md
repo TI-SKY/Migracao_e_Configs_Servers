@@ -15,6 +15,11 @@ Verificar espaço em disco
 df -h
 ```
 
+Configurar o hostname
+```bash
+vim /etc/hostname
+```
+
 Atualizar índice de pacotes 
 ```bash
 apt-get update
@@ -45,9 +50,9 @@ Instalar unzip no sistema
 apt-get install unzip
 ```
 
-# Configurar a rede
+## Configurar a rede
 
-Exemplo quando configurado 2 placas de rede com sistema bond: (placas funcionam com redundândia de conexão e somam as taxas)
+### Exemplo quando configurado 2 placas de rede com sistema bond: (placas funcionam com redundândia de conexão e somam as taxas)
 -- VERIFICAR OS ENDEREÇOS
 
 Abrir o arquivo de configuraçao de rede
@@ -91,7 +96,7 @@ Testar os link das placas de rede com o comando.  (nome dado a sua interface bon
 ethtool bond0
 ```
 
-Exemplo quando configurado uma unica placa de rede: 
+### Exemplo quando configurado uma unica placa de rede: 
 -- VERIFICAR OS ENDEREÇOS
 
 ```bash
@@ -125,3 +130,10 @@ Evitar que outro serviço force sua inicialização
 systemctl disable systemd-networkd-wait-online.service
 systemctl mask systemd-networkd-wait-online.service
 ```
+
+## Criar estrutura de diretórios em /
+```bash
+mkdir /sky && cd /sky && mkdir -m 775 dados && mkdir -m 777 executaveis && mkdir logs skyremotebackup livros_digitalizados scripts backup && mkdir /sky/backup/diario /sky/backup/incremental /sky/backup/completo
+```
+
+
