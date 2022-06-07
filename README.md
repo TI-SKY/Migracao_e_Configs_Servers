@@ -8,5 +8,6 @@ O arquivo [Migracao_CENTOS_ou_REDHAT.md](https://github.com/TI-SKY/Linux-Migraca
 
 > Não recomendamos o uso de centos devido o encerramento do suporte gratuito.
 
+O arquivo [script_config_sistemas.bat](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/script_config_sistemas.bat) é um **script** que pode ser baixado em uma estação que já teve os sistemas configurados para gerar o .reg para configurar novas estações.
 
 O arquivo [Configurar_Acesso_Samba_Por_Usuario.md](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/Configurar_Acesso_Samba_Por_Usuario.md) contém exemplo para configurar uma pasta no samba com usuário e senha.
