@@ -63,7 +63,7 @@ mkdir /sky && cd /sky && mkdir -m 775 dados && mkdir -m 777 executaveis && mkdir
 
 Instalar samba
 ```bash
-apt install samba -y
+yum install samba -y
 ```
 
 Fazer uma cópia do arquivo original do samba
