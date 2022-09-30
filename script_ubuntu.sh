@@ -1,6 +1,6 @@
 #!/bin/bash
 ###########################################################################
-# Script para Preparação de ambiente para HQBIRD
+# Script para Preparação de ambiente para Sistemas Sky
 #      _            _        __                            _   _
 #  ___| | ___   _  (_)_ __  / _| ___  _ __ _ __ ___   __ _| |_(_) ___ __ _ 
 # / __| |/ / | | | | | '_ \| |_ / _ \| '__| '_ ` _ \ / _` | __| |/ __/ _` |
