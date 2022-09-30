@@ -1,6 +1,6 @@
 #!/bin/bash
-###########################################################################
-# Script para Preparação de ambiente para Sistemas Sky
+############################################################################################################################
+# Script para Preparação de ambiente para HQBIRD
 #      _            _        __                            _   _
 #  ___| | ___   _  (_)_ __  / _| ___  _ __ _ __ ___   __ _| |_(_) ___ __ _ 
 # / __| |/ / | | | | | '_ \| |_ / _ \| '__| '_ ` _ \ / _` | __| |/ __/ _` |
@@ -11,34 +11,27 @@
 # Autor: Silvio Souza
 # silvio.souza@skyinformatica.com.br
 # Última modificação: 30/09/2022
-
+############################################################################################################################
 echo Verificar atualizações do sistema operacional
-sleep 4
-clear
+sleep 3
 apt-get update -y
 apt-get upgrade -y
 clear
 
 echo Habilitar Data e hora no histórico de comandos
-sleep 4
+sleep 3
 export HISTTIMEFORMAT='%F %T '
-
-echo Instalar unzip no sistema
-sleep 4
-apt-get install unzip
-
-echo Instalar samba
-sleep 4
-apt install samba -y
-clear
-
+echo '##############################################################################################################################'
+echo Instalar unzip, samba no sistema
+sleep 3
+apt-get install -y unzip samba
+echo '##############################################################################################################################'
 echo Fazendo uma cópia do arquivo original do samba
-sleep 4
+sleep 3
 cp /etc/samba/smb.conf /etc/samba/smb_original.conf
-clear
-
+echo '##############################################################################################################################'
 echo Configurando conf do Samba
-sleep 4
+sleep 3
 cat >> /etc/samba/smb.conf << EOF
 [sky]
 
@@ -67,49 +60,47 @@ path = /sky/backup/
 guest ok = yes
 read only = yes
 EOF
-
+echo '##############################################################################################################################'
 echo Reiniciando Samba
-sleep 4
+sleep 3
 systemctl restart smbd
-
+echo '##############################################################################################################################'
 echo Instalar pré requisitos para HQBIRD
-sleep 4
+sleep 3
 
 echo Instalando Java
-sleep 4
+sleep 3
 apt install -y openjdk-8-jre-headless
-
+echo '##############################################################################################################################'
 echo Instalando libtommath
-sleep 4
+sleep 3
 apt install -y libtommath1
-
+echo '##############################################################################################################################'
 echo Instalando libncurses
-sleep 4
+sleep 3
 apt install -y libncurses5
-clear
-
+echo '##############################################################################################################################'
 echo Download da versão do HQBird
-sleep 4
+sleep 3
 wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2022.sh
 chmod +x install_fb25_hqbird2022.sh
-clear
-
+echo '############################################################################################################################################################################################################################################################'
 echo Instalando HQBIRD
-sleep 4
+sleep 3
 ./install_fb25_hqbird2022.sh
-
+echo '##############################################################################################################################'
 echo Criando os atalhos gbak, gfix, gstat
-sleep 4
+sleep 3
 ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec
-clear
-
+echo '##############################################################################################################################'
 echo Parar e desativar serviços que vem com hq2022 e não utilizaremos
-sleep 4
+sleep 3
 systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service
 systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
-
+echo '##############################################################################################################################'
 echo Alterando método firebird
-sleep 4
+sleep 3
 /opt/firebird/bin/changeMultiConnectMode.sh
-
+echo '##############################################################################################################################'
 echo Instalação concluída
+echo '##############################################################################################################################'
