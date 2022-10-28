@@ -18,7 +18,7 @@ mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 wget https://ib-aid.com/download/hqbird/install_fb30_hqbird2022.sh
 ```
 ```bash
-chmod +x /sky/executaveis/install/HQbird/install_fb30_hqbird2022.sh
+chmod +x install_fb30_hqbird2022.sh
 ```
 ```bash
 ./install_fb30_hqbird2022.sh
