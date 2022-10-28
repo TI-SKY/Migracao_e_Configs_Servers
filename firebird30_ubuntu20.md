@@ -34,8 +34,11 @@ Verificar configurações do conf do firebird
 vi /opt/firebird/firebird.conf
 ```
 DefaultDbCachePages = 50k #entre 3k até ...
+
 AuthServer = Srp, Legacy_Auth
+
 UserManager = Srp, Legacy_UserManager
+
 WireCrypt = Disabled
 
 [Para calcular DefaultDbCachePages, TempCacheLimit, etc...](cc.ib-aid.com/)
