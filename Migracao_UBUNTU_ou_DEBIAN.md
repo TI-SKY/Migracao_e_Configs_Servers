@@ -139,7 +139,7 @@ Criar estrutura de diretórios em
 O exemplo abaixo é para configurar a partir do /
 
 ```bash
-mkdir /sky && cd /sky && mkdir -m 775 dados && mkdir -m 777 executaveis && mkdir logs skyremotebackup livros_digitalizados scripts backup executaveis/install/ && mkdir /sky/backup/diario /sky/backup/incremental /sky/backup/completo
+mkdir /sky && cd /sky && mkdir -m 775 dados && mkdir -m 777 executaveis && mkdir -m 777 lixeira && mkdir logs skyremotebackup livros_digitalizados scripts backup executaveis/install/ && mkdir /sky/backup/diario /sky/backup/incremental /sky/backup/completo
 ```
 
 Instalar samba
