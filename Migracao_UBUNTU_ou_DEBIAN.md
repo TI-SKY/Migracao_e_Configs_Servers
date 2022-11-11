@@ -419,11 +419,11 @@ rename -v 's/.fdb/.gdb/' *.fdb
 
 
 ### NOTAR
-
-1º Navegue nos menus Utilitários>>Painel de controle>>Conexão com banco de dados.
-2º Navegue nos menus Utilitários>>Painel de controle>>Skyimagens
-
-
-
+Verifique se no banco NOTAR há apontamentos para os bancos SKYIMAGENS em vez de skyimagens.
 ```bash
+SELECT DBNOMEARQUIVO FROM IMAGENSIDX i WHERE i.DBNOMEARQUIVO = 'SKYIMAGENS'
+```bash
+E caso for necessário, faça update para colcoar em minúsculo. 
+```bash
+UPDATE imagensidx i SET i.DBNOMEARQUIVO = 'skyimagens' where i.DBNOMEARQUIVO = 'SKYIMAGENS'
 ```
