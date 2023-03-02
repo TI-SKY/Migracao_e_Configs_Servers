@@ -34,7 +34,8 @@ writeable = yes
 browseable = yes
 path = /sky/backup/
 guest ok = no
-user = backupsky
+valid user = skybackup
+force user = x
 read only = yes
 ```
 
