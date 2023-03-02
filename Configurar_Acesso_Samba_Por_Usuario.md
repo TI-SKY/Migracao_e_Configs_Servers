@@ -45,4 +45,6 @@ systemctl restart smbd nmbd
 ```
 
 PRONTO!
-MAS LEMBRE-SE que o usuário criado precisará ter permissão na pasta compartilhada.
+## MAS LEMBRE-SE: 
+- que o usuário criado precisará ter permissão na pasta compartilhada.
+- O windows só permite um usuario pra conexão por servidor samba.
