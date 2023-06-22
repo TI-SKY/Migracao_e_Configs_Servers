@@ -32,7 +32,7 @@ apt-get upgrade -y
 
 Habilitar Data e hora no histórico de comandos (history)
 ```bash
-export HISTTIMEFORMAT='%F %T '
+export HISTTIMEFORMAT='%F %T ' && echo "export HISTTIMEFORMAT='%F %T '" >> /etc/bash.bashrc
 ```
 
  ### Acertar fuso horário no ubuntu
