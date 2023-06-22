@@ -35,11 +35,18 @@ Habilitar Data e hora no histórico de comandos (history)
 export HISTTIMEFORMAT='%F %T '
 ```
 
- Acertar fuso de horas no ubuntu
+ ### Acertar fuso horário no ubuntu
 ```bash
 dpkg-reconfigure tzdata
 ```
-
+ Verificar o horário do sistema e do syslog
+```bash
+date && tail /var/log/syslog
+```
+Caso o horário do syslog não tenha sido ajustado pro fuso correto
+```bash
+systemctl restart rsyslog
+```
 Caso queira colocar a hora em formato 24hrs
 ```bash
 localectl set-locale LC_TIME="C.UTF-8"
