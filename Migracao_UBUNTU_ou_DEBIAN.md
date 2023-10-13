@@ -328,7 +328,7 @@ WireCrypt = Disabled
 DataTypeCompatibility = 2.5
 RemoteAuxPort = 3051
 ```
-Caso e caso necessário
+E caso necessário
 ```bash
 AuthServer = Legacy_Auth, Srp, Win_Sspi
 AuthClient = Srp256, Srp, Legacy_Auth
