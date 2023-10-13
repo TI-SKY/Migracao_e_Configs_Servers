@@ -214,7 +214,7 @@ systemctl restart smbd
 ```
 
 
-## Instalar e configurar o HQBIRD
+# Instalar e configurar o HQBIRD
 
 Instalar as dependencias para instalação do HQbird com o comando abaixo
 ```bash
@@ -231,7 +231,7 @@ apt-get install software-properties-common && apt-add-repository 'deb http://sec
 ##### Se não for debian, ignorar os comandos acima
 
 
-
+## Firebird 2.5
 Entrar no diretório de download HQbird comando abaixo
 ```bash
 mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
@@ -240,13 +240,7 @@ mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2022.sh
 ```
 
-Descompactar, dar a permissao completa ao arquivo instalador e instalar o HQbird
-```bash
-unzip /sky/executaveis/install/HQbird/hqbirdlinux.zip
-```
-```bash
-rm /sky/executaveis/install/HQbird/hqbirdlinux.zip
-```
+Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
 chmod +x /sky/executaveis/install/HQbird/install_fb25_hqbird2022.sh
 ```
@@ -269,11 +263,6 @@ Efetuar troca do método do firebird para superclassic
 apt install xinetd
 ```
 
-Criar os atalhos gbak, gstat e gfix
-```bash
-ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec
-```
-
 Se necessário redefinir a senha do firebird no servidor
 ```bash
 /opt/firebird/bin/gsec
@@ -284,12 +273,6 @@ modify sysdba -pw #8_CHAR
 ```bash
 quit
 ```
-
-Dê permissão para a pasta dados (onde ficarão os bancos)
-```bash
-chown -R firebird.firebird /sky/dados && chmod 664 /sky/dados/*?db
-```
-
 Verificar configurações do conf do firebird
 ```bash
 vi /opt/firebird/firebird.conf
@@ -298,6 +281,69 @@ DefaultDbCachePages = 384 #entre 384 a 1024
 
 ```bash
 RemoteAuxPort = 3051
+```
+
+---
+
+## Firebird 4.0
+Pode-se mnater o superclassic que é o padrão da instalação.
+O modo do server agora é configurado através do conf, mas dentro da pasta bin há um script `changeServerMode.sh` para realizar a função completa da troca do ServerMode.
+
+Entrar no diretório de download HQbird comando abaixo
+```bash
+mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
+```
+```bash
+wget https://ib-aid.com/download/hqbird/install_fb40_hqbird2022.sh
+```
+
+Dar a permissao completa ao arquivo instalador e instalar o HQbird
+```bash
+chmod +x /sky/executaveis/install/HQbird/install_fb40_hqbird2022.sh
+```
+```bash
+./install_fb40_hqbird2022.sh
+```
+Se necessário redefinir a senha do firebird no servidor
+
+`O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL. Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA.`
+
+```bash
+/opt/firebird/bin/isql -user sysdba -password masterkey security.db
+```
+```bash
+alter user SYSDBA password 'NOVASENHA' using plugin Srp;
+```
+```bash
+alter user SYSDBA password 'NOVASENHA' using plugin Legacy_UserManager;
+```
+```bash
+exit;
+```
+```bash
+vi /opt/firebird/firebird.conf
+```
+```bash
+WireCrypt = Disabled
+DataTypeCompatibility = 2.5
+RemoteAuxPort = 3051
+```
+Caso e caso necessário
+```bash
+AuthServer = Legacy_Auth, Srp, Win_Sspi
+AuthClient = Srp256, Srp, Legacy_Auth
+```
+
+---
+
+Criar os atalhos gbak, gstat e gfix
+```bash
+ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec
+```
+
+Dê permissão para a pasta dados (onde ficarão os bancos)
+```bash
+chown -R firebird.firebird /sky/dados && chmod 664 /sky/dados/*?db
 ```
 
 Parar e desativar serviços que vem com hq2022 e não usamos
