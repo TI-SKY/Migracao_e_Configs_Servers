@@ -242,10 +242,10 @@ wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
 
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
-chmod +x hqbird/install_fb25_hqbird2024.sh
+chmod +x install_fb25_hqbird2024.sh
 ```
 ```bash
-./hqbird/install_fb25_hqbird2024.sh
+./install_fb25_hqbird2024.sh
 ```
 
 Efetuar troca do método do firebird para superclassic
