@@ -156,7 +156,7 @@ apt install samba -y
 
 Fazer uma cópia do arquivo original do samba
 ```bash
-cp /etc/samba/smb.conf /etc/samba/smb_original.conf
+cp /etc/samba/smb.conf /etc/samba/smb_original.bkp
 ```
 
 ```bash
@@ -237,15 +237,15 @@ Entrar no diretório de download HQbird comando abaixo
 mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 ```
 ```bash
-wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2022.sh
+wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
 ```
 
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
-chmod +x /sky/executaveis/install/HQbird/install_fb25_hqbird2022.sh
+chmod +x hqbird/install_fb25_hqbird2024.sh
 ```
 ```bash
-./install_fb25_hqbird2022.sh
+./hqbird/install_fb25_hqbird2024.sh
 ```
 
 Efetuar troca do método do firebird para superclassic
