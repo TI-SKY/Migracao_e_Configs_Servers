@@ -223,10 +223,14 @@ apt install -y openjdk-8-jre-headless libtommath1 libncurses5
 
 #### Caso seja DEBIAN
 ALGUMAS VERSÕES DO DEBIAN NÃO FUNCIONAM COM A VERSÃO DO HQ 2020
-O debian 10 e 11 não tem mais o java 8 nativamente no repositório, para poder instalar o JAVA 8 no debian, siga os passos abaixo.
-
+O debian 10, 11 e 12 não tem mais o java 8 nativamente no repositório, para poder instalar o JAVA 8 no debian, siga os passos abaixo.
+##### Debian 10 e 11
 ```bash
 apt-get install software-properties-common && apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && apt-get update && apt-get install openjdk-8-jdk
+```
+##### Debian 12
+```bash
+wget http://www.mirbsd.org/~tg/Debs/sources.txt/wtf-bookworm.sources && mv wtf-bookworm.sources /etc/apt/sources.list.d/ && apt update && apt-get install openjdk-8-jdk
 ```
 ##### Se não for debian, ignorar os comandos acima
 
