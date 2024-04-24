@@ -35,6 +35,11 @@ Habilitar Data e hora no histórico de comandos (history)
 export HISTTIMEFORMAT='%F %T ' && echo "export HISTTIMEFORMAT='%F %T '" >> /etc/bash.bashrc
 ```
 
+Alterar o vm.swappiness para iniciar o uso de swap somente quando tiver menos de 10% de RAM livre
+```bash
+sysctl -w vm.swappiness=10 && echo vm.swappiness=10 >> /etc/sysctl.conf
+```
+
  ### Acertar fuso horário no ubuntu
 ```bash
 dpkg-reconfigure tzdata
