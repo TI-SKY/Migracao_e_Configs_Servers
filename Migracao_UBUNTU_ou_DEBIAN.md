@@ -323,6 +323,8 @@ Se necessário redefinir a senha do firebird no servidor
 ```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Srp;
 ```
+O comando abaixo altera a senha do usuário sysdba no modo legacy, é esperado retornar um erro no firebird 4 já que o módulo não esta carregado por padrão.
+> NÃO HÁ A NECESSIDADE DE RODAR O COMANDO ABAIXO SE NÃO FOR UTILIZAR O MODO LEGACY.
 ```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Legacy_UserManager;
 ```
