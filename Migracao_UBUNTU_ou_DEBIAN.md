@@ -225,6 +225,7 @@ Instalar as dependencias para instalação do HQbird com o comando abaixo
 ```bash
 apt install -y openjdk-8-jre-headless libtommath1 libncurses5
 ```
+> se for ubuntu 24, não instalar libncurses5, agora está na versão 6 e já vem instalado.
 
 #### Caso seja DEBIAN
 ALGUMAS VERSÕES DO DEBIAN NÃO FUNCIONAM COM A VERSÃO DO HQ 2020
@@ -255,6 +256,11 @@ chmod +x install_fb25_hqbird2024.sh
 ```
 ```bash
 ./install_fb25_hqbird2024.sh
+```
+
+> Caso seja ubuntu 24, criar um link para libncurses versão 5 apontando pra 6
+```bash
+ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
 ```
 
 Efetuar troca do método do firebird para superclassic
