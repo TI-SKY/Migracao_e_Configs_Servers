@@ -1,4 +1,4 @@
-# Preparação após a instalação de Ubuntu Server 20.04 64 bit
+# Preparação após a instalação de Ubuntu Server 20/22/24 .04 64 bit
 
 Lista o service tag e serial do equipamento
 ```bash
