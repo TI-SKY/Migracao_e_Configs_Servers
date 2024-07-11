@@ -247,31 +247,36 @@ Entrar no diretório de download HQbird comando abaixo
 mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 ```
 ```bash
-wget https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
+wget https://cc.ib-aid.com/download/distr/install.sh
+```
+> endereço antigo apenas com fb25: https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
+
+> Caso seja ubuntu 24, trocar a dependencia para libncurses6 em vez de 5
+```bash
+sed -i 's/'libncurses\.so\.5/'libncurses\.so\.6/' install.sh
 ```
 
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
-chmod +x install_fb25_hqbird2024.sh
-```
-```bash
-./install_fb25_hqbird2024.sh
-```
-
-> Caso seja ubuntu 24, criar um link para libncurses versão 5 apontando pra 6
-```bash
-ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
+chmod +x install.sh && ./install.sh --fb25
 ```
 
 Efetuar troca do método do firebird para superclassic
 ```bash
 /opt/firebird/bin/changeMultiConnectMode.sh
 ```
+```bash
+thread
+```
 - thread: **super classic** #recomendado
 -- super classic aparece um processo unico fb_smp_server
 - process: **classic**
 -- classic usa multi processo fb_inet (um processo para cada conexão)
- 
+
+```bash
+systemctl stop firebird.service && systemctl start firebird.service
+ ```
+
 - OBS¹: Se alterar para o classic e o sistema não rodar o firebird é necessário verificar se não ter o xinet na pasta /etc/init.d, é necessário instalar o xinet, para isso
 - OBS²: Quando aplicado o modo classic mudar as paradas e inicializações nos scripts que normalmente passam a ser /etc/init.d/xinetd stop ou shutdown, /etc/init.d/xinetd start. E encerrar os processos abertos pelo usuário firebird (encerra também o dash do hqbird): **killall -u firebird**
 ```bash
@@ -309,16 +314,14 @@ Entrar no diretório de download HQbird comando abaixo
 mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 ```
 ```bash
-wget https://ib-aid.com/download/hqbird/install_fb40_hqbird2022.sh
+wget https://cc.ib-aid.com/download/distr/install.sh
 ```
-
+endereço antigo apenas com fb40: https://ib-aid.com/download/hqbird/install_fb40_hqbird2022.sh
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
-chmod +x /sky/executaveis/install/HQbird/install_fb40_hqbird2022.sh
+chmod +x install.sh && ./install.sh --fb40
 ```
-```bash
-./install_fb40_hqbird2022.sh
-```
+
 Se necessário redefinir a senha do firebird no servidor
 
 `O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL. Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA.`
@@ -365,9 +368,7 @@ chown -R firebird.firebird /sky/dados && chmod 664 /sky/dados/*?db
 
 Parar e desativar serviços que vem com hq2022 e não usamos
 ```bash
-systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service
-
-systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
+systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service && systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
 ```
 
 Após definir o conf personalizado como ativo definir os bancos para que passem a usar as configurções personalizadas do conf personalizado, no diretório dados aplicar o comando.
