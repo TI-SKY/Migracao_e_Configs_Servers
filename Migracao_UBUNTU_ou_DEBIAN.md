@@ -249,6 +249,9 @@ mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
 ```bash
 wget https://cc.ib-aid.com/download/distr/install.sh
 ```
+
+> caso tenha problemas com o instalador há versões antigas em https://arch.skyinformatica.com.br/downloads/utilitarios/bancodados/ com o nome: `install_hqbird<Last update>.sh`. Para baixar direto no linux: ```wget --http-user=sky --ask-password <LINK>``` 
+
 > endereço antigo apenas com fb25: https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
 
 > Caso seja ubuntu 24, trocar a dependencia para libncurses6 em vez de 5
