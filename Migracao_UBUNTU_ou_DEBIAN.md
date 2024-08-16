@@ -270,11 +270,9 @@ ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libn
 
 Efetuar troca do método do firebird para superclassic
 ```bash
-/opt/firebird/bin/changeMultiConnectMode.sh
+yes 'thread' | /opt/firebird/bin/changeMultiConnectMode.sh
 ```
-```bash
-thread
-```
+
 - thread: **super classic** #recomendado
 -- super classic aparece um processo unico fb_smp_server
 - process: **classic**
