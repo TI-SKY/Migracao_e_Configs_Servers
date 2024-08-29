@@ -65,9 +65,9 @@ systemctl restart firebird.service
 
 ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec && ln -s /opt/firebird/bin/isql /bin/isql
 
-echo ""
+echo " "
 echo "-------------------------------------------------------"
 echo "Confirme as configurações em /opt/firebird/firebird.conf"
 echo "Troque a senha sysdba:"
 echo "isql -user sysdba -password masterkey security.db"
-echo "alter user SYSDBA password 'NOVASENHA' using plugin Srp;"
+echo "alter user SYSDBA password <NOVASENHA> using plugin Srp;"
