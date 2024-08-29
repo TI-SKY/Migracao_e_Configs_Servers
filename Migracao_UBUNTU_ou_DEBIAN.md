@@ -314,6 +314,11 @@ RemoteAuxPort = 3051
 Pode-se mnater o superclassic que é o padrão da instalação.
 O modo do server agora é configurado através do conf, mas dentro da pasta bin há um script `changeServerMode.sh` para realizar a função completa da troca do ServerMode.
 
+CASO SEJA UBUNTU 24, apenas rode o comando abaixo e pule para Pós Instalação
+```bash
+bash <(curl -fsSL https://raw.githubusercontent.com/TI-SKY/Linux-Migracao_e_Configs/main/fb_hqbird_ub24-40.sh)
+```
+
 Entrar no diretório de download HQbird comando abaixo
 ```bash
 mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
@@ -365,6 +370,8 @@ Criar os atalhos gbak, gstat e gfix
 ```bash
 ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec
 ```
+
+# Pós instalação
 
 Dê permissão para a pasta dados (onde ficarão os bancos)
 ```bash
