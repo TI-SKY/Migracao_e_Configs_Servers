@@ -159,8 +159,9 @@ WireCrypt = Disabled
 #authentication plugin setup
 #Recommendation - use SELECT * FROM SEC$USERS
 #to check that you have users for all plugins
-AuthServer = Srp256, Legacy_Auth
-UserManager = Srp, Legacy_UserManager
+AuthClient = Srp256, Srp
+AuthServer = Srp256
+UserManager = Srp
 
 #MaxIdentifierByteLength = 252
 #MaxIdentifierCharLength = 63
@@ -177,6 +178,8 @@ BlobTempSpace = 1 # HQBird - cache PSQL Blobs to temp space
 #HQbirdVersionString = true # HQBird - show HQbird version (disable for dbExpress)
 LeftJoinConversion=false # advanced optimization of joins is off
 EOF
+
+systemctl restart firebird.service
 
 ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec && ln -s /opt/firebird/bin/isql /bin/isql
 
