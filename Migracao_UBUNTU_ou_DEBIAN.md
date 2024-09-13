@@ -221,6 +221,14 @@ systemctl restart smbd
 
 # Instalar e configurar o HQBIRD
 
+Para realizar uma nova instalação ou atualizar o hq, pare os serviços do firebird e hqbird e confirme se não há nenhum processo rodando.
+```bash
+ps axu |grep firebird
+```
+Para atualizar (fb25 para fb25 ou fb40 para fb40), instale por cima e siga os passos do instalador.
+Para trocar de firebird (fb25 para fb40) desinstale o hqbird.
+
+
 Instalar as dependencias para instalação do HQbird com o comando abaixo
 ```bash
 apt install -y openjdk-8-jre-headless libtommath1 libncurses5
@@ -241,7 +249,7 @@ wget http://www.mirbsd.org/~tg/Debs/sources.txt/wtf-bookworm.sources && mv wtf-b
 ##### Se não for debian, ignorar os comandos acima
 
 
-## Firebird 2.5
+# Firebird 2.5
 Entrar no diretório de download HQbird comando abaixo
 ```bash
 mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
@@ -282,6 +290,18 @@ yes 'thread' | /opt/firebird/bin/changeMultiConnectMode.sh
 systemctl stop firebird.service && systemctl start firebird.service
  ```
 
+Analisar e confirmar o nome correto da pasta de instalação firebird em /opt
+
+```bash
+ls -lh /opt
+```
+Definir uma variável com a pasta de instalação firebird em /opt
+
+```bash
+FBROOTDIR=/opt/fbirebird
+```
+
+
 - OBS¹: Se alterar para o classic e o sistema não rodar o firebird é necessário verificar se não ter o xinet na pasta /etc/init.d, é necessário instalar o xinet, para isso
 - OBS²: Quando aplicado o modo classic mudar as paradas e inicializações nos scripts que normalmente passam a ser /etc/init.d/xinetd stop ou shutdown, /etc/init.d/xinetd start. E encerrar os processos abertos pelo usuário firebird (encerra também o dash do hqbird): **killall -u firebird**
 ```bash
@@ -310,7 +330,7 @@ RemoteAuxPort = 3051
 
 ---
 
-## Firebird 4.0
+# Firebird 4.0
 Pode-se mnater o superclassic que é o padrão da instalação.
 O modo do server agora é configurado através do conf, mas dentro da pasta bin há um script `changeServerMode.sh` para realizar a função completa da troca do ServerMode.
 
@@ -331,14 +351,26 @@ Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
 chmod +x install.sh && ./install.sh --fb40
 ```
+Analisar e confirmar o nome correto da pasta de instalação firebird em /opt
+
+```bash
+ls -lh /opt
+```
+Definir uma variável com a pasta de instalação firebird em /opt
+
+```bash
+FBROOTDIR=/opt/fb40
+```
 
 Se necessário redefinir a senha do firebird no servidor
 
 `O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL. Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA.`
 
 ```bash
-/opt/firebird/bin/isql -user sysdba -password masterkey security.db
+$FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
 ```
+O banco para ser conectado é $FBROOTDIR/security4.fdb, mas há um alias criado para ele com o nome de security.db
+
 ```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Srp;
 ```
@@ -351,7 +383,7 @@ alter user SYSDBA password 'NOVASENHA' using plugin Legacy_UserManager;
 exit;
 ```
 ```bash
-vi /opt/firebird/firebird.conf
+vi $FBROOTDIR/firebird.conf
 ```
 ```bash
 WireCrypt = Disabled
@@ -363,15 +395,34 @@ E caso necessário
 AuthServer = Legacy_Auth, Srp, Win_Sspi
 AuthClient = Srp256, Srp, Legacy_Auth
 ```
+Confirme o nome do serviço
+```bash
+systemctl list-units --type service
+```
+Manipule o serviço com systemctl
+```bash
+systemctl stop firebird.opt_firebird40.service
+```
+```bash
+systemctl start firebird.opt_firebird40.service
+```
 
 ---
 
+# Pós instalação
+
+Caso não tenha criado, crie a variável com o caminho da pasta de instalação do firebird.
+Ex: FBROOTDIR=/opt/fbirebird ou FBROOTDIR=/opt/fb40
+
 Criar os atalhos gbak, gstat e gfix
 ```bash
-ln -s /opt/firebird/bin/gbak /bin/gbak && ln -s /opt/firebird/bin/gstat /bin/gstat && ln -s /opt/firebird/bin/gfix /bin/gfix && ln -s /opt/firebird/bin/nbackup /bin/nbackup && ln -s /opt/firebird/bin/gsec /bin/gsec
+ln -s $FBROOTDIR/bin/gbak /bin/gbak && \
+ln -s $FBROOTDIR/bin/gstat /bin/gstat && \
+ln -s $FBROOTDIR/bin/gfix /bin/gfix && \
+ln -s $FBROOTDIR/bin/nbackup /bin/nbackup && \
+ln -s $FBROOTDIR/bin/gsec /bin/gsec && \
+ln -s $FBROOTDIR/bin/isql /bin/isql
 ```
-
-# Pós instalação
 
 Dê permissão para a pasta dados (onde ficarão os bancos)
 ```bash
