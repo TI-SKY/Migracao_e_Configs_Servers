@@ -310,7 +310,7 @@ apt install xinetd
 
 Se necessário redefinir a senha do firebird no servidor
 ```bash
-/opt/firebird/bin/gsec
+$FBROOTDIR/bin/gsec
 ```
 ```bash
 modify sysdba -pw #8_CHAR
@@ -320,7 +320,7 @@ quit
 ```
 Verificar configurações do conf do firebird
 ```bash
-vi /opt/firebird/firebird.conf
+vi $FBROOTDIR/firebird.conf
 ```
 DefaultDbCachePages = 384 #entre 384 a 1024
 
