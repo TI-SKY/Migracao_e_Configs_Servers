@@ -251,7 +251,8 @@ ALGUMAS VERSÕES DO DEBIAN NÃO FUNCIONAM COM A VERSÃO DO HQ 2020
 O debian 10, 11 e 12 não tem mais o java 8 nativamente no repositório, para poder instalar o JAVA 8 no debian, siga os passos abaixo.
 ##### Debian 10 e 11
 ```bash
-apt-get install software-properties-common && apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && \
+apt-get install software-properties-common && \
+apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && \
 apt-get update && \
 apt-get install openjdk-8-jdk
 ```
@@ -267,7 +268,8 @@ apt update && apt-get install openjdk-8-jdk
 # Firebird 2.5
 Entrar no diretório de download HQbird comando abaixo
 ```bash
-mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
+mkdir $SKYROOTDIR/executaveis/install/HQbird && \
+cd $SKYROOTDIR/executaveis/install/HQbird
 ```
 ```bash
 wget https://cc.ib-aid.com/download/distr/install.sh
@@ -302,7 +304,8 @@ yes 'thread' | /opt/firebird/bin/changeMultiConnectMode.sh
 -- classic usa multi processo fb_inet (um processo para cada conexão)
 
 ```bash
-systemctl stop firebird.service && systemctl start firebird.service
+systemctl stop firebird.service && \
+systemctl start firebird.service
  ```
 
 Analisar e confirmar o nome correto da pasta de instalação firebird em /opt
