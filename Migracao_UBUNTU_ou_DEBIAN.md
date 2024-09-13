@@ -298,7 +298,7 @@ ls -lh /opt
 Definir uma variável com a pasta de instalação firebird em /opt
 
 ```bash
-FBROOTDIR=/opt/fbirebird
+FBROOTDIR=/opt/firebird
 ```
 
 
@@ -412,7 +412,7 @@ systemctl start firebird.opt_firebird40.service
 # Pós instalação
 
 Caso não tenha criado, crie a variável com o caminho da pasta de instalação do firebird.
-Ex: FBROOTDIR=/opt/fbirebird ou FBROOTDIR=/opt/fb40
+Ex: FBROOTDIR=/opt/firebird ou FBROOTDIR=/opt/fb40
 
 Criar os atalhos gbak, gstat e gfix
 ```bash
