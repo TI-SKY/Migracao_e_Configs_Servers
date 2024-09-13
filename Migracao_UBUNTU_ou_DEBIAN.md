@@ -331,7 +331,7 @@ RemoteAuxPort = 3051
 ---
 
 # Firebird 4.0
-Pode-se mnater o superclassic que é o padrão da instalação.
+Pode-se manter o superclassic que é o padrão da instalação.
 O modo do server agora é configurado através do conf, mas dentro da pasta bin há um script `changeServerMode.sh` para realizar a função completa da troca do ServerMode.
 
 CASO SEJA UBUNTU 24, apenas rode o comando abaixo e pule para Pós Instalação
