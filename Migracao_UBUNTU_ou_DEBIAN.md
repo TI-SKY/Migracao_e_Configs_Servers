@@ -150,8 +150,19 @@ systemctl mask systemd-networkd-wait-online.service
 Criar estrutura de diretórios em
 O exemplo abaixo é para configurar a partir do /
 
+Definir a variável com o caminho raiz da pasta sky
 ```bash
-mkdir /sky && cd /sky && mkdir -m 775 dados && mkdir -m 777 executaveis && mkdir -m 777 lixeira && mkdir logs skyremotebackup livros_digitalizados scripts backup executaveis/install/ && mkdir /sky/backup/diario /sky/backup/incremental /sky/backup/completo
+SKYROOTDIR=/sky
+```
+
+```bash
+mkdir $SKYROOTDIR && \
+cd $SKYROOTDIR && \
+mkdir -m 775 dados && \
+mkdir -m 777 executaveis && \
+mkdir -m 777 lixeira && \
+mkdir logs skyremotebackup livros_digitalizados scripts backup executaveis/install/ && \
+mkdir $SKYROOTDIR/backup/diario $SKYROOTDIR/backup/incremental $SKYROOTDIR/backup/completo
 ```
 
 Instalar samba
@@ -240,11 +251,15 @@ ALGUMAS VERSÕES DO DEBIAN NÃO FUNCIONAM COM A VERSÃO DO HQ 2020
 O debian 10, 11 e 12 não tem mais o java 8 nativamente no repositório, para poder instalar o JAVA 8 no debian, siga os passos abaixo.
 ##### Debian 10 e 11
 ```bash
-apt-get install software-properties-common && apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && apt-get update && apt-get install openjdk-8-jdk
+apt-get install software-properties-common && apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main' && \
+apt-get update && \
+apt-get install openjdk-8-jdk
 ```
 ##### Debian 12
 ```bash
-wget http://www.mirbsd.org/~tg/Debs/sources.txt/wtf-bookworm.sources && mv wtf-bookworm.sources /etc/apt/sources.list.d/ && apt update && apt-get install openjdk-8-jdk
+wget http://www.mirbsd.org/~tg/Debs/sources.txt/wtf-bookworm.sources && \
+mv wtf-bookworm.sources /etc/apt/sources.list.d/ && \
+apt update && apt-get install openjdk-8-jdk
 ```
 ##### Se não for debian, ignorar os comandos acima
 
@@ -334,6 +349,11 @@ RemoteAuxPort = 3051
 Pode-se manter o superserver que é o padrão da instalação.
 O modo do server agora é configurado através do conf, mas dentro da pasta bin há um script `changeServerMode.sh` para realizar a função completa da troca do ServerMode.
 
+Definir a variável com o caminho raiz da pasta sky
+```bash
+SKYROOTDIR=/sky
+```
+
 CASO SEJA UBUNTU 24, apenas rode o comando abaixo e pule para Pós Instalação
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/TI-SKY/Linux-Migracao_e_Configs/main/fb_hqbird_ub24-40.sh)
@@ -341,7 +361,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/TI-SKY/Linux-Migracao_e_Conf
 
 Entrar no diretório de download HQbird comando abaixo
 ```bash
-mkdir /sky/executaveis/install/HQbird && cd /sky/executaveis/install/HQbird
+mkdir -p $SKYROOTDIR/executaveis/install/HQbird && \
+cd $SKYROOTDIR/executaveis/install/HQbird
 ```
 ```bash
 wget https://cc.ib-aid.com/download/distr/install.sh
@@ -431,7 +452,8 @@ chown -R firebird.firebird /sky/dados && chmod 664 /sky/dados/*?db
 
 Parar e desativar serviços que vem com hq2022 e não usamos
 ```bash
-systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service && systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
+systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service && \
+systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
 ```
 
 Após definir o conf personalizado como ativo definir os bancos para que passem a usar as configurções personalizadas do conf personalizado, no diretório dados aplicar o comando.
