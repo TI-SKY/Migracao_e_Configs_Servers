@@ -432,8 +432,9 @@ systemctl start firebird.opt_firebird40.service
 
 # Pós instalação
 
-Caso não tenha criado, crie a variável com o caminho da pasta de instalação do firebird.
-Ex: FBROOTDIR=/opt/firebird ou FBROOTDIR=/opt/fb40
+Caso não tenha criado, crie a variável com o caminho da pasta de instalação do firebird e sky.
+
+Ex: FBROOTDIR=/opt/firebird ou FBROOTDIR=/opt/fb40, SKYROOTDIR=/sky
 
 Criar os atalhos gbak, gstat e gfix
 ```bash
@@ -447,7 +448,7 @@ ln -s $FBROOTDIR/bin/isql /bin/isql
 
 Dê permissão para a pasta dados (onde ficarão os bancos)
 ```bash
-chown -R firebird.firebird /sky/dados && chmod 664 /sky/dados/*?db
+chown -R firebird.firebird $SKYROOTDIR/dados && chmod 664 $SKYROOTDIR/dados/*?db
 ```
 
 Parar e desativar serviços que vem com hq2022 e não usamos
