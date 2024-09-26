@@ -33,7 +33,6 @@ ExtConnPoolSize = 64 # external connections pool size
 ExtConnPoolLifeTime = 3600 # seconds
 
 #set DataTypeCompatibility according Migration Guide https://ib-aid.com/download/docs/fb4migrationguide.html
-#DataTypeCompatibility =
 #WireCryptPlugin = ChaCha64, ChaCha, Arc4
 WireCrypt = Disabled
 #WireCompression = false
