@@ -288,6 +288,7 @@ ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libn
 ```
 
 
+
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
 chmod +x install.sh && ./install.sh --fb25
