@@ -279,18 +279,18 @@ wget https://cc.ib-aid.com/download/distr/install.sh
 
 > endereço antigo apenas com fb25: https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
 
-> Caso seja ubuntu 24, trocar a dependencia para libncurses6 em vez de 5
+> Caso seja ubuntu 24, trocar a dependencia para libncurses6 em vez de 5. Criar um link para libncurses.so.5
 ```bash
 sed -i 's/'libncurses\.so\.5/'libncurses\.so\.6/' install.sh
 ```
+```bash
+ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
+```
+
 
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
 chmod +x install.sh && ./install.sh --fb25
-```
-
-```bash
-ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
 ```
 
 Efetuar troca do método do firebird para superclassic
