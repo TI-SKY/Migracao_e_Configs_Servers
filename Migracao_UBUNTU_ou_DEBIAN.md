@@ -214,7 +214,6 @@ read only = yes
 [livros digitalizados]
 
 comment = diretorio arquivos de livros digitalizados do acervo do cartorio
-writeable = yes
 browseable = yes
 path = /sky/livros_digitalizados/
 guest ok = yes
