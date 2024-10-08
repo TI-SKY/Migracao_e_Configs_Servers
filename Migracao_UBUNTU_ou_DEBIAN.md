@@ -421,7 +421,7 @@ AuthClient = Srp256, Srp, Legacy_Auth
 ```
 Confirme o nome do serviço
 ```bash
-systemctl list-units --type service
+systemctl list-units --type service --all
 ```
 Manipule o serviço com systemctl
 ```bash
