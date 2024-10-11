@@ -428,7 +428,9 @@ Manipule o serviço com systemctl
 systemctl stop firebird.opt_firebird40.service
 ```
 ```bash
-systemctl start firebird.opt_firebird40.service
+systemctl start firebird.opt_firebird40.service && \
+systemctl enable firebird.opt_firebird40.service && \
+systemctl enable hqbird.service
 ```
 
 ---
