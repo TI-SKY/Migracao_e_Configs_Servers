@@ -455,7 +455,7 @@ Dê permissão para a pasta dados (onde ficarão os bancos)
 chown -R firebird.firebird $SKYROOTDIR/dados && chmod 664 $SKYROOTDIR/dados/*?db
 ```
 
-Parar e desativar serviços que vem com hq2022 e não usamos
+Parar e desativar serviços que vem com hq2022 pra frente e não usamos, e habilitar o hq (caso não esteja habilitado)
 ```bash
 systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service && \
 systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service && \
