@@ -429,8 +429,7 @@ systemctl stop firebird.opt_firebird40.service
 ```
 ```bash
 systemctl start firebird.opt_firebird40.service && \
-systemctl enable firebird.opt_firebird40.service && \
-systemctl enable hqbird.service
+systemctl enable firebird.opt_firebird40.service
 ```
 
 ---
@@ -459,7 +458,8 @@ chown -R firebird.firebird $SKYROOTDIR/dados && chmod 664 $SKYROOTDIR/dados/*?db
 Parar e desativar serviços que vem com hq2022 e não usamos
 ```bash
 systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service && \
-systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service
+systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service && \
+systemctl enable hqbird.service
 ```
 
 Após definir o conf personalizado como ativo definir os bancos para que passem a usar as configurções personalizadas do conf personalizado, no diretório dados aplicar o comando.
