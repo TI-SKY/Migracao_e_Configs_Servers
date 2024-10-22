@@ -280,12 +280,8 @@ wget https://cc.ib-aid.com/download/distr/install.sh
 
 > Caso seja ubuntu 24, trocar a dependencia para libncurses6 em vez de 5. Criar um link para libncurses.so.5
 ```bash
-sed -i 's/'libncurses\.so\.5/'libncurses\.so\.6/' install.sh
-```
-```bash
 ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
 ```
-
 
 
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
