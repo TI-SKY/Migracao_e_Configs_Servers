@@ -357,11 +357,6 @@ Definir a variável com o caminho raiz da pasta sky
 SKYROOTDIR=/sky
 ```
 
-CASO SEJA UBUNTU 24, apenas rode o comando abaixo e pule para Pós Instalação
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/TI-SKY/Linux-Migracao_e_Configs/main/fb_hqbird_ub24-40.sh)
-```
-
 Entrar no diretório de download HQbird comando abaixo
 ```bash
 mkdir -p $SKYROOTDIR/executaveis/install/HQbird && \
@@ -370,7 +365,6 @@ cd $SKYROOTDIR/executaveis/install/HQbird
 ```bash
 wget https://cc.ib-aid.com/download/distr/install.sh
 ```
-endereço antigo apenas com fb40: https://ib-aid.com/download/hqbird/install_fb40_hqbird2022.sh
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
 chmod +x install.sh && ./install.sh --fb40
@@ -385,10 +379,16 @@ Definir uma variável com a pasta de instalação firebird em /opt
 ```bash
 FBROOTDIR=/opt/fb40
 ```
+Confirme o nome do serviço
+```bash
+systemctl list-units --type service --all
+```
 
 Se necessário redefinir a senha do firebird no servidor
 
 `O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL. Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA.`
+
+`O isql no linux usa por padrão a conexão embedded e o security.db não tem permissão para acesso externo, então é preciso fazer a operação com o serviço do firebird parado.`
 
 ```bash
 $FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
@@ -419,17 +419,13 @@ E caso necessário
 AuthServer = Legacy_Auth, Srp, Win_Sspi
 AuthClient = Srp256, Srp, Legacy_Auth
 ```
-Confirme o nome do serviço
-```bash
-systemctl list-units --type service --all
-```
 Manipule o serviço com systemctl
 ```bash
-systemctl stop firebird.opt_firebird40.service
+systemctl stop firebird.opt_fb40.service
 ```
 ```bash
-systemctl start firebird.opt_firebird40.service && \
-systemctl enable firebird.opt_firebird40.service
+systemctl start firebird.opt_fb40.service && \
+systemctl enable firebird.opt_fb40.service
 ```
 
 ---
