@@ -498,7 +498,7 @@ inicia-backup-diario.sh
 
 Se tiver sistema de imoveis, colocar a skysoundex.dll em: /opt/firebird/UDF/ ou /opt/fb40/UDF/
 
-[SKySoundex.dll](https://drive.google.com/file/d/14T9GZy0SVe73d4qf59GsMVbK0PDhI3ph/view)
+[SKySoundex.dll](https://arch.skyinformatica.com.br/downloads/sistemas/skysoundex/instaladores/)
 
 Para o firebird 4.0 alterar o conf.
 Colocar Restrict e informar o diretório das UDF
