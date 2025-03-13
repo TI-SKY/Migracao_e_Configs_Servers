@@ -36,8 +36,13 @@ export HISTTIMEFORMAT='%F %T ' && echo "export HISTTIMEFORMAT='%F %T '" >> /etc/
 ```
 
 Alterar o vm.swappiness para iniciar o uso de swap somente quando tiver menos de 10% de RAM livre
+Alterar o vm.max_map_count para evitar fragmentação da memória do sistema.
 ```bash
-sysctl -w vm.swappiness=10 && echo vm.swappiness=10 >> /etc/sysctl.conf
+cat << EOF >> /etc/sysctl.conf
+vm.swappiness=10
+vm.max_map_count=256000
+EOF
+sysctl -p
 ```
 
  ### Acertar fuso horário no ubuntu
