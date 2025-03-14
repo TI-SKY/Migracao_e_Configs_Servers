@@ -439,7 +439,7 @@ DataTypeCompatibility = 2.5
 RemoteAuxPort = 3051
 ```
 
-Manipule o serviço com systemctl
+## Manipule o serviço com systemctl
 ```bash
 systemctl stop firebird.opt_fb40.service
 ```
