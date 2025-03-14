@@ -396,10 +396,14 @@ Se necessário redefinir a senha do firebird no servidor
 ```bash
 $FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
 ```
+
 O banco para ser conectado é $FBROOTDIR/security4.fdb, mas há um alias criado para ele com o nome de security.db
 
 ```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Srp;
+```
+```bash
+exit;
 ```
 ## Caso seja necessário que algum banco conecte usando o modo legacy:
 Provavelmente apenas para skynow
