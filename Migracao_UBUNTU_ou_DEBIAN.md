@@ -387,8 +387,8 @@ systemctl list-units --type service --all
 
 Se necessário redefinir a senha do firebird no servidor
 
-`O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL. Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA.`
-
+`O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL.`
+`Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA necessários para autenticar, caso precise do modo legacy, altera a senha desse SYSDBA também!`
 `O isql no linux usa por padrão a conexão embedded e o security.db não tem permissão para acesso externo, então é preciso fazer a operação com o serviço do firebird parado.`
 
 ```bash
@@ -399,8 +399,22 @@ O banco para ser conectado é $FBROOTDIR/security4.fdb, mas há um alias criado 
 ```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Srp;
 ```
-O comando abaixo altera a senha do usuário sysdba no modo legacy, é esperado retornar um erro no firebird 4 já que o módulo não esta carregado por padrão.
-> NÃO HÁ A NECESSIDADE DE RODAR O COMANDO ABAIXO SE NÃO FOR UTILIZAR O MODO LEGACY.
+## Caso seja necessário que algum banco conecte usando o modo legacy:
+Provavelmente apenas para skynow
+- no firebird.conf
+```bash
+UserManager = Srp, Legacy_UserManager
+```
+- no databases.conf
+```bash
+skynow = /caminho/db
+{
+	AuthServer = Srp, Win_Sspi, Legacy_Auth
+}
+```
+```bash
+systemctl restart firebird.opt_fb40.service
+```
 ```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Legacy_UserManager;
 ```
@@ -421,8 +435,7 @@ Manipule o serviço com systemctl
 systemctl stop firebird.opt_fb40.service
 ```
 ```bash
-systemctl start firebird.opt_fb40.service && \
-systemctl enable firebird.opt_fb40.service
+systemctl enable --now firebird.opt_fb40.service
 ```
 
 ---
