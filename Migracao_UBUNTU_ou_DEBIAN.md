@@ -422,6 +422,9 @@ skynow = /caminho/db
 systemctl restart firebird.opt_fb40.service
 ```
 ```bash
+$FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
+```
+```bash
 alter user SYSDBA password 'NOVASENHA' using plugin Legacy_UserManager;
 ```
 ```bash
