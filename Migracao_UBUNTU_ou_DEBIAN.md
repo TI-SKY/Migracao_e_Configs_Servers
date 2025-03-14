@@ -387,9 +387,11 @@ systemctl list-units --type service --all
 
 Se necessário redefinir a senha do firebird no servidor
 
-`O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL.`
-`Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA necessários para autenticar, caso precise do modo legacy, altera a senha desse SYSDBA também!`
-`O isql no linux usa por padrão a conexão embedded e o security.db não tem permissão para acesso externo, então é preciso fazer a operação com o serviço do firebird parado.`
+> O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL.
+
+> Lembre-se que há mais de um método de autenticação, por isso há vários usuários SYSDBA, então é interessante alterar a senha de todos os SYSDBA necessários para autenticar, caso precise do modo legacy, altera a senha desse SYSDBA também!
+
+> Para conectar no security4.db é mais fácil com o banco parado ou logo após reiniciar o serviço do firebird.
 
 ```bash
 $FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
