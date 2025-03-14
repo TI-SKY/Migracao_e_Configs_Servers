@@ -385,6 +385,15 @@ Confirme o nome do serviço
 systemctl list-units --type service --all
 ```
 
+```bash
+vi $FBROOTDIR/firebird.conf
+```
+```bash
+WireCrypt = Disabled
+DataTypeCompatibility = 2.5
+RemoteAuxPort = 3051
+```
+
 Se necessário redefinir a senha do firebird no servidor
 
 > O gsec nessa versão está obsoleto, o ideal é alterar através dos comandos de SQL.
@@ -430,14 +439,7 @@ alter user SYSDBA password 'NOVASENHA' using plugin Legacy_UserManager;
 ```bash
 exit;
 ```
-```bash
-vi $FBROOTDIR/firebird.conf
-```
-```bash
-WireCrypt = Disabled
-DataTypeCompatibility = 2.5
-RemoteAuxPort = 3051
-```
+
 
 ## Manipule o serviço com systemctl
 ```bash
