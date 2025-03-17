@@ -30,7 +30,7 @@ vim /etc/samba/smb.conf
 ```bash
 [backup]
 comment = diretorio arquivos de backups de bancos de dados de sistemas sky
-writeable = yes
+writeable = no
 browseable = yes
 path = /sky/backup/
 guest ok = no
