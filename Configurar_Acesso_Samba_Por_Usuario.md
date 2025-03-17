@@ -41,7 +41,7 @@ read only = yes
 
 
 ```bash
-systemctl restart smbd nmbd
+systemctl reload smbd nmbd
 ```
 
 PRONTO!
