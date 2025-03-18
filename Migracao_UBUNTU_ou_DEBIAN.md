@@ -424,7 +424,7 @@ UserManager = Srp, Legacy_UserManager
 ```bash
 skynow = /caminho/db
 {
-	AuthServer = Srp, Win_Sspi, Legacy_Auth
+	AuthServer = Srp, Legacy_Auth
 }
 ```
 ```bash
