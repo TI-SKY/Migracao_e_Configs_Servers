@@ -370,6 +370,10 @@ Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
 chmod +x install.sh && ./install.sh --fb40
 ```
+Se precisar instalar mais de uma versão do firebird
+```bash
+chmod +x install.sh && ./install.sh --fb40 --fb40-port=3050 --fb25 --fb25-port=3025
+```
 Analisar e confirmar o nome correto da pasta de instalação firebird em /opt
 
 ```bash
