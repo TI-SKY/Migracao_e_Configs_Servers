@@ -80,33 +80,33 @@ vim /etc/netplan/*.yaml
 ```
 
 ```bash
-bonds:
-        bond0:
-            addresses:
-            - 10.10.1.4/24
-            dhcp4: false
-            gateway4: 10.10.1.254
-            interfaces:
-            - eno1
-            - eno2
-            nameservers:
-                addresses:
-                - 10.10.1.254
-                - 8.8.8.8
-                search:
-                - 8.8.8.8
-            parameters:
-                mode: balance-rr
-    ethernets:
-        eno1:
-            addresses: []
-            dhcp4: false
-            dhcp6: false
-        eno2:
-            addresses: []
-            dhcp4: false
-            dhcp6: false
-    version: 2
+network:
+  version: 2
+  ethernets:
+    eno1:
+      addresses: []
+      dhcp4: false
+      dhcp6: false
+    eno2:
+      addresses: []
+      dhcp4: false
+      dhcp6: false
+  bonds:
+    bond0:
+      addresses:
+        - 10.10.1.4/24
+      dhcp4: false
+      gateway4: 10.10.1.254
+      interfaces:
+        - eno1
+        - eno2
+      nameservers:
+        addresses:
+          - 10.10.1.254
+          - 8.8.8.8
+        search: []
+      parameters:
+        mode: balance-rr
 ```
 
 Testar os link das placas de rede com o comando.  (nome dado a sua interface bond)
@@ -119,16 +119,17 @@ ethtool bond0
 
 ```bash
 network:
-    ethernets:
-        eno1:
-            addresses:
-            - 10.10.1.254/24
-            gateway4: 10.10.1.254
-            nameservers:
-                addresses:
-                - 8.8.8.8
-                - 8.8.4.4
-    version: 2
+  version: 2
+  ethernets:
+    eno1:
+      addresses:
+        - 10.10.1.254/24
+      gateway4: 10.10.1.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 8.8.4.4
+
 
 ```
 
