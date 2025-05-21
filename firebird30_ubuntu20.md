@@ -1,3 +1,7 @@
+DOCUMENTO DEPRECADO.
+UTILIZAR FB 2.5 OU 4.0.
+INFORMAÇÃO SOBRE INSTALAÇÃO NO DOCUMENTO UBUNTU/DEBIAN.
+
 ## Instalar e configurar o HQBIRD
 
 Instalar as dependencias para instalação do HQbird com o comando abaixo

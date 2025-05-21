@@ -13,11 +13,11 @@
 
 # 
 
-O arquivo [Migracao_UBUNTU_ou_DEBIAN.md](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/Migracao_UBUNTU_ou_DEBIAN.md) contém o roteiro para configurar um UBUNTU 20.04, também pode ser utilizado com DEBIAN 10 ou 11.
+O arquivo [Migracao_UBUNTU_ou_DEBIAN.md](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/Migracao_UBUNTU_ou_DEBIAN.md) contém o roteiro para configurar UBUNTU DO 20.04 AO 24.04, também pode ser utilizado com DEBIAN 10 ou 11.
 
 > Ubuntu 22.04 liberado para uso a partir da versão do fb 2.5.9.27174, no HqBird 2024.
 
-O arquivo [Migracao_CENTOS_ou_REDHAT.md](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/Migracao_CENTOS_ou_REDHAT.md) contém o roteiro para configurar um Centos 7, também pode ser utilizado em outras distros Red Hat.
+O arquivo [Migracao_CENTOS_ou_REDHAT.md](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/Migracao_CENTOS_ou_REDHAT.md) contém o roteiro para configurar um Centos 7, também pode ser utilizado em outras distros Red Hat. DEPRECADO.
 
 > Não recomendamos o uso de centos devido o encerramento do suporte gratuito.
 
