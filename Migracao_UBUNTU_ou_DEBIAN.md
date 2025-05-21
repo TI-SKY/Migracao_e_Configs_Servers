@@ -181,6 +181,8 @@ Fazer uma cópia do arquivo original do samba
 cp /etc/samba/smb.conf /etc/samba/smb_original.bkp
 ```
 
+
+
 ```bash
 vim /etc/samba/smb.conf
 ```
@@ -233,6 +235,13 @@ Reiniciar o serviço do samba
 ```bash
 systemctl restart smbd
 ```
+
+Criar um usuário padrão com acesso ao samba.
+```bash
+useradd skysmb -s /bin/false -c "usuario acesso samba" -M && \
+smbpasswd -a skysmb
+```
+Informe a senha ```skysky```
 
 
 # Instalar e configurar o HQBIRD
