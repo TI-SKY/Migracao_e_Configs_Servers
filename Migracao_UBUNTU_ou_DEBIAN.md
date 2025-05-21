@@ -96,13 +96,13 @@ network:
       addresses:
         - 10.10.1.4/24
       dhcp4: false
-      gateway4: 10.10.1.254
+      gateway4: 10.10.1.1
       interfaces:
         - eno1
         - eno2
       nameservers:
         addresses:
-          - 10.10.1.254
+          - 10.10.1.1
           - 8.8.8.8
         search: []
       parameters:
