@@ -419,6 +419,7 @@ Se necessário redefinir a senha do firebird no servidor
 ```bash
 $FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
 ```
+> Caso ao executar o isql ele não abra e retorne o erro "No entry for terminal type "xterm"; Tente: ```export TERM=xterm``` ou ```export TERM=vt100```
 
 O banco para ser conectado é $FBROOTDIR/security4.fdb, mas há um alias criado para ele com o nome de security.db
 
