@@ -241,7 +241,7 @@ Criar um usuário padrão com acesso ao samba.
 useradd skysmb -s /bin/false -c "usuario acesso samba" -M && \
 smbpasswd -a skysmb
 ```
-Informe a senha ```skysky```
+Informe a senha ```Skysky*``` # pode ser utilizada em windows server que exige complexidade
 
 
 # Instalar e configurar o HQBIRD
