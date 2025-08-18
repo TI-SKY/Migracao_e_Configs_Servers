@@ -24,3 +24,29 @@ O arquivo [Migracao_CENTOS_ou_REDHAT.md](https://github.com/TI-SKY/Linux-Migraca
 O arquivo [script_config_sistemas.bat](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/script_config_sistemas.bat) é um **script** que pode ser baixado em uma estação que já teve os sistemas configurados para gerar o .reg para configurar novas estações.
 
 O arquivo [Configurar_Acesso_Samba_Por_Usuario.md](https://github.com/TI-SKY/Linux-Migracao_e_Configs/blob/main/Configurar_Acesso_Samba_Por_Usuario.md) contém exemplo para configurar uma pasta no samba com usuário e senha.
+
+# ATENDIMENTO SKYNET
+```
+CONFIGURAÇÕES: SERVIDOR ATUAL DO CLIENTE PARA IMPLANTAÇÃO
+
+S.O INSTALADO (WINDOWS e LINUX) / VERSÃO: 
+SERVIDOR COM IP FIXO (SIM / NÃO): 
+SERVIDOR (FÍSICO / VM): 
+HOSTNAME:
+ESPAÇO LIVRE EM DISCO:
+ -DISCO DO SISTEMA (SISTEMA / BANCO):
+ -TIPO DE DISCO (SSD / MECÂNICO):
+ -RAID (1 / 10 / SEM RAID):
+MEMÓRIA RAM TOTAL:
+PROCESSADORES (LÓGICOS / VIRTUAIS): 
+TIOPO DE REDE (MEGA / GIGA):
+SISTEMA ATUAL DO CLIENTE:
+GERENCIADOR DO SISTEMA ATUAL E SUA VERSÃO: 
+TAMANHO DA BASE DE DADOS ATUAL DO CLIENTE:
+
+SERVIDOR ATUAL:
+( ) APTO 
+( ) NÃO APTO
+
+OBS DO CHAMADO:
+```
