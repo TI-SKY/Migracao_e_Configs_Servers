@@ -258,7 +258,11 @@ Instalar as dependencias para instalação do HQbird com o comando abaixo
 ```bash
 apt install -y openjdk-8-jre-headless libtommath1 libncurses5
 ```
-> se for ubuntu 24, não instalar libncurses5, agora está na versão 6 e já vem instalado. Atenção para instalar corretamente as outras dependências.
+> Se for ubuntu 24, não instalar libncurses5, agora está na versão 6 e já vem instalado. Atenção para instalar corretamente as outras dependências.
+> E trocar a dependencia para libncurses6 em vez de 5. Criar um link para libncurses.so.5
+```bash
+ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
+```
 
 #### Caso seja DEBIAN
 ALGUMAS VERSÕES DO DEBIAN NÃO FUNCIONAM COM A VERSÃO DO HQ 2020
@@ -292,11 +296,6 @@ wget https://cc.ib-aid.com/download/distr/install.sh
 > caso tenha problemas com o instalador há versões antigas em https://arch.skyinformatica.com.br/downloads/utilitarios/bancodados/ com o nome: `install_hqbird<Last update>.sh`. Para baixar direto no linux: ```wget --http-user=sky --ask-password <LINK>``` 
 
 > endereço antigo apenas com fb25: https://ib-aid.com/download/hqbird/install_fb25_hqbird2024.sh
-
-> Caso seja ubuntu 24, trocar a dependencia para libncurses6 em vez de 5. Criar um link para libncurses.so.5
-```bash
-ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
-```
 
 
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
