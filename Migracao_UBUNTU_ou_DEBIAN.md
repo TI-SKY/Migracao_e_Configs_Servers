@@ -488,8 +488,8 @@ chown -R firebird.firebird $SKYROOTDIR/dados && chmod 664 $SKYROOTDIR/dados/*?db
 
 Parar e desativar serviços que vem com hq2022 pra frente e não usamos, e habilitar o hq (caso não esteja habilitado)
 ```bash
-systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv.service && \
-systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv.service && \
+systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv2.service && \
+systemctl disable fbcclauncher.service fbcctracehorse.service fbccamv2.service && \
 systemctl enable hqbird.service
 ```
 
