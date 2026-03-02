@@ -402,7 +402,7 @@ systemctl list-units --type service --all
 vi $FBROOTDIR/firebird.conf
 ```
 ```bash
-WireCrypt = Disabled
+WireCrypt = Enabled
 DataTypeCompatibility = 2.5
 RemoteAuxPort = 3051
 ```
