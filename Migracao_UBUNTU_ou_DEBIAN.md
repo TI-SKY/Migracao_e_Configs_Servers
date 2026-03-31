@@ -442,7 +442,7 @@ skynow = /caminho/db
 }
 ```
 ```bash
-systemctl restart firebird.opt_fb40.service
+systemctl restart firebird.opt_fb50.service
 ```
 ```bash
 $FBROOTDIR/bin/isql -user sysdba -password masterkey security.db
