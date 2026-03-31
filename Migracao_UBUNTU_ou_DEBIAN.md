@@ -358,7 +358,7 @@ RemoteAuxPort = 3051
 
 ---
 
-# Firebird 4.0
+# Firebird 4.0/5.0
 Pode-se manter o superserver que é o padrão da instalação.
 O modo do server agora é configurado através do conf, mas dentro da pasta bin há um script `changeServerMode.sh` para realizar a função completa da troca do ServerMode.
 
@@ -377,11 +377,11 @@ wget https://cc.ib-aid.com/download/distr/install.sh
 ```
 Dar a permissao completa ao arquivo instalador e instalar o HQbird
 ```bash
-chmod +x install.sh && ./install.sh --fb40
+chmod +x install.sh && ./install.sh --fb50
 ```
 Se precisar instalar mais de uma versão do firebird
 ```bash
-chmod +x install.sh && ./install.sh --fb40 --fb40-port=3050 --fb25 --fb25-port=3025
+chmod +x install.sh && ./install.sh --fb50 --fb50-port=3050 --fb40 --fb40-port=3040 --fb25 --fb25-port=3025
 ```
 Analisar e confirmar o nome correto da pasta de instalação firebird em /opt
 
@@ -391,7 +391,7 @@ ls -lh /opt
 Definir uma variável com a pasta de instalação firebird em /opt
 
 ```bash
-FBROOTDIR=/opt/fb40
+FBROOTDIR=/opt/fb50
 ```
 Confirme o nome do serviço
 ```bash
@@ -457,10 +457,10 @@ exit;
 
 ## Manipule o serviço com systemctl
 ```bash
-systemctl stop firebird.opt_fb40.service
+systemctl stop firebird.opt_fb50.service
 ```
 ```bash
-systemctl enable --now firebird.opt_fb40.service
+systemctl enable --now firebird.opt_fb50.service
 ```
 
 ---
@@ -543,10 +543,10 @@ Se tiver sistema de imoveis, colocar a skysoundex.dll em: /opt/firebird/UDF/ ou 
 
 [SKySoundex.dll](https://arch.skyinformatica.com.br/downloads/sistemas/skysoundex/instaladores/)
 
-Para o firebird 4.0 alterar o conf.
+Para o firebird 5.0 alterar o conf.
 Colocar Restrict e informar o diretório das UDF
 
-UdfAccess = Restrict /opt/fb40/UDF
+UdfAccess = Restrict /opt/fb50/UDF
 
 ## Crontab
 Realiza os backups diários de Segundas a Sextas no servidor local.
