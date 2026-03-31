@@ -469,7 +469,7 @@ systemctl enable --now firebird.opt_fb50.service
 
 Caso não tenha criado, crie a variável com o caminho da pasta de instalação do firebird e sky.
 
-Ex: FBROOTDIR=/opt/firebird ou FBROOTDIR=/opt/fb40, SKYROOTDIR=/sky
+Ex: FBROOTDIR=/opt/firebird ou FBROOTDIR=/opt/fb50, SKYROOTDIR=/sky
 
 Criar os atalhos gbak, gstat e gfix
 ```bash
