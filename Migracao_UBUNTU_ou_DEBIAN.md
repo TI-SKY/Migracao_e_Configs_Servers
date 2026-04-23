@@ -486,6 +486,27 @@ Dê permissão para a pasta dados (onde ficarão os bancos)
 chown -R firebird.firebird $SKYROOTDIR/dados && chmod 664 $SKYROOTDIR/dados/*?db
 ```
 
+### Serviço do HQ:
+```bash
+vi /lib/systemd/system/hqbird.service
+```
+
+Corrigir limites de arquivos no serviço do hqbird (o correto é LimitNOFILE)
+```bash
+LimitNOFILE=9999
+```
+
+Caso seja necessário, force o java a usar o timezone -3 adicionando o parâmetro -Duser.timezone=GMT-3 na inicialização do java
+
+```bash
+-Duser.timezone=GMT-3
+```
+Ex: ```ExecStart=/usr/bin/java -Djava.net.preferIPv4Stack=true -Djava.awt.headless=true -Duser.timezone=GMT-3 -Xms160m -Xmx512m -XX:+UseG1GC -jar dataguard.jar -config-directory=/opt/hqbird/conf -default-output-directory=/opt/hqbird/outdataguard/```
+
+```bash
+systemctl daemon-reload && systemctl restart hqbird.service
+```
+
 Parar e desativar serviços que vem com hq2022 pra frente e não usamos, e habilitar o hq (caso não esteja habilitado)
 ```bash
 systemctl stop fbcclauncher.service fbcctracehorse.service fbccamv2.service && \
