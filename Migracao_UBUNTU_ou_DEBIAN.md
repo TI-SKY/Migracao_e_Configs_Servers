@@ -522,10 +522,16 @@ OBS: Após esse procedimento para que entre em vigor é necessário parar e inic
 
 Definir os bancos de imagens antigos para somente leitura
 ```bash
-for i in skyimagens*.?db; do gfix -mode read_only $i;done
-for i in tedimagens*.?db; do gfix -mode read_only $i;done
-for i in imgprotesto*.?db; do gfix -mode read_only $i;done
-for i in imagens*.?db; do gfix -mode read_only $i;done
+for i in $(ls skyimagens????.?db | head -n -1); do gfix -mode read_only "$i"; done
+```
+```bash
+for i in $(ls tedimagens????.?db | head -n -1); do gfix -mode read_only "$i"; done
+```
+```bash
+for i in $(ls imgprotesto????.?db | head -n -1); do gfix -mode read_only "$i"; done
+```
+```bash
+for i in $(ls imagens????.?db | head -n -1); do gfix -mode read_only "$i"; done
 ```
 Mas o último banco de imagens deve ficar como leitura e gravação, para isso aplique o comando abaixo no último banco de imagens
 ```bash
