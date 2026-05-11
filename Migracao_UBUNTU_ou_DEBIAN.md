@@ -256,10 +256,10 @@ Para trocar de firebird (fb25 para fb40) desinstale o hqbird.
 
 Instalar as dependencias para instalação do HQbird com o comando abaixo
 ```bash
-apt install -y openjdk-8-jre-headless libtommath1 libncurses5
+apt install -y openjdk-8-jre-headless libtommath1 libncurses6
 ```
-> Se for ubuntu 24, não instalar libncurses5, agora está na versão 6 e já vem instalado. Atenção para instalar corretamente as outras dependências.
-> E trocar a dependencia para libncurses6 em vez de 5. Criar um link para libncurses.so.5
+> A partir do ub24 está na versão 6 e já vem instalado. Atenção para instalar corretamente as outras dependências.
+> Opcionalmente, crie um link para enganar o instalador caso seja necessário, mas as versões mais novas já aceitam a 5 direto.
 ```bash
 ln -s /usr/lib/x86_64-linux-gnu/libncurses.so.6.4 /usr/lib/x86_64-linux-gnu/libncurses.so.5
 ```
