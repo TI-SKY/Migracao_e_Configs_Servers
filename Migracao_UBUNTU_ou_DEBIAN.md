@@ -30,6 +30,11 @@ Atualizar o sistema
 apt-get upgrade -y
 ```
 
+Instalar pacotes geralmente necessários
+```bash
+apt-get install unzip acl
+```
+
 Habilitar Data e hora no histórico de comandos (history)
 ```bash
 export HISTTIMEFORMAT='%F %T ' && echo "export HISTTIMEFORMAT='%F %T '" >> /etc/bash.bashrc
@@ -60,11 +65,6 @@ systemctl restart rsyslog
 Caso queira colocar a hora em formato 24hrs
 ```bash
 localectl set-locale LC_TIME="C.UTF-8"
-```
-
-Instalar unzip no sistema
-```bash
-apt-get install unzip
 ```
 
 
@@ -405,6 +405,7 @@ vi $FBROOTDIR/firebird.conf
 WireCrypt = Enabled
 DataTypeCompatibility = 2.5
 RemoteAuxPort = 3051
+AuthServer = Srp256
 ```
 
 Se necessário redefinir a senha do firebird no servidor
